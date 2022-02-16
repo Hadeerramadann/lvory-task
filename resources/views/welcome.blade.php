@@ -37,8 +37,101 @@
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-6">
+                            <h2>Add course </h2>
+                                <form method="get" action="{{url('addCours')}}">
+                                    <div class="form-group">
+                                        <label for="name">Cours Name </label>
+                                        <input type="text" class="form-control" name="name" id="name">
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Add Cours</button>
+                                </form>
+                                <form method="get" action="{{url('addStudent')}}">
+                                      <h2>Add student </h2>
+                                     
+                                            <div class="form-group">
+                                                <label for="name">Student Name </label>
+                                                <input type="text" class="form-control" name="name" id="name">
+                                            </div>
+                                            
+                                    <button type="submit" class="btn btn-primary">Add student</button>
+                                </form>
+                                <form method="get" action="{{url('addTeacher')}}">
+                                      <h2>Add Teatcher </h2>
+                                     
+                                            <div class="form-group">
+                                                <label for="name">Teatcher Name </label>
+                                                <input type="text" class="form-control" name="name" id="name">
+                                            </div>
+                                            
+                                    <button type="submit" class="btn btn-primary">Add Teatcher</button>
+                                </form>
+                            
+                        </div>
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                                <form method="get" action="{{url('CoursesStudent')}}">
+                                      <h2>choose courses for an  student </h2>
+                                     
+                                            
+                                            <div class="form-group">
+
+                                               <label for="account">Choose student</label>
+
+                                                <select name="student_id" id="student_id" class="form-control">
+                                                        @foreach($data['Students'] as $Student)
+                                                            <option  value="{{$Student->id}}">{{$Student->name}}</option>
+                                                         @endforeach
+                                                </select>
+                                                </div>
+           
+                                            <div class="form-group">
+
+                                               <label for="account">Choose courses</label>
+
+                                                <select name="coursesid[]" id="coursesid" class="form-control mdb-select colorful-select dropdown-primary md-form" multiple >
+                                                        @foreach($data['Coursses'] as $Cours)
+                                                            <option  value="{{$Cours->id}}">{{$Cours->name}}</option>
+                                                         @endforeach
+                                                </select>
+                                                </div>
+                                    
+                                    
+                                    
+                                    <button type="submit" class="btn btn-primary">save</button>
+                                </form>
+                                <form method="get" action="{{url('Coursesteacher')}}">
+                                      <h2>choose courses for a Teacher </h2>
+                                     
+                                            
+                                            <div class="form-group">
+
+                                               <label for="account">Choose teacher</label>
+
+                                                <select name="teacher_id" id="teacher_id" class="form-control">
+                                                        @foreach($data['Teatchers'] as $Teatcher)
+                                                            <option  value="{{$Teatcher->id}}">{{$Teatcher->name}}</option>
+                                                         @endforeach
+                                                </select>
+                                                </div>
+           
+                                            <div class="form-group">
+
+                                               <label for="account">Choose courses</label>
+
+                                                <select name="coursesid[]" id="coursesid" class="form-control mdb-select colorful-select dropdown-primary md-form" multiple >
+                                                        @foreach($data['Coursses'] as $Cours)
+                                                            <option  value="{{$Cours->id}}">{{$Cours->name}}</option>
+                                                         @endforeach
+                                                </select>
+                                                </div>
+                                    
+                                    
+                                    
+                                    <button type="submit" class="btn btn-primary">save</button>
+                                </form>
+                        </div>
                        
-                        
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                              <h5>students </h5>
                             

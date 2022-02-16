@@ -18,8 +18,14 @@ class ActionController extends Controller
     public function index()
     {
        $Students =  Students::all();
+       $Teatchers =  Teatchers::all();
+       $Coursses =  Coursses::all();
+
        $data = array(
         'Students' => $Students, 
+        'Teatchers' => $Teatchers, 
+        'Coursses' => $Coursses, 
+
         
 
         ); 
@@ -42,9 +48,55 @@ class ActionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addCours(Request $request)
     {
-        //
+        $data = $request->all();
+        $CoursName=$data['name'];
+
+        $Coursses= new Coursses();
+        $Coursses ->name=$CoursName;
+        $Coursses ->save();
+
+        return redirect('/');
+    }
+    public function addStudent(Request $request)
+    {
+        $data = $request->all();
+        $StudentName=$data['name'];
+
+        $Students= new Students();
+        $Students ->name=$StudentName;
+        $Students ->save();
+
+        return redirect('/');
+    }
+    public function addTeacher(Request $request)
+    {
+        $data = $request->all();
+        $TeatcherName=$data['name'];
+
+        $Teatchers= new Teatchers();
+        $Teatchers ->name=$TeatcherName;
+        $Teatchers ->save();
+
+        return redirect('/');
+    }
+
+    public function CoursesStudent(Request $request)
+    {
+       $student= Students::find($request ->student_id);
+       $student->courses()->attach($request ->coursesid);
+
+
+        return redirect('/');
+    }
+    public function Coursesteacher(Request $request)
+    {
+       $Teatcher= Teatchers::find($request ->teacher_id);
+       $Teatcher->courses()->attach($request ->coursesid);
+
+
+        return redirect('/');
     }
 
     /**

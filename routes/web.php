@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'ActionController@index')->name('home');
+Route::get('addCours', 'ActionController@addCours')->name('addCours');
+Route::get('addStudent', 'ActionController@addStudent')->name('addStudent');
+Route::get('addTeacher', 'ActionController@addTeacher')->name('addTeacher');
+
+Route::get('CoursesStudent', 'ActionController@CoursesStudent')->name('CoursesStudent');
+Route::get('Coursesteacher', 'ActionController@Coursesteacher')->name('Coursesteacher');
+
+
 Route::get('details/{student_id}', 'ActionController@show')->name('details');
 Route::get('coursDetails/{student_id}', 'ActionController@showCoursDetails')->name('coursDetails');
 
